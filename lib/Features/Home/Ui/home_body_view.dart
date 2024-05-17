@@ -1,0 +1,81 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:gbsub/Core/utils/service_locatro.dart';
+import 'package:gbsub/Features/Home/Ui/widgets/custom_body_continer_list_view.dart';
+import 'package:gbsub/Features/Home/Ui/widgets/custom_medication_info_list_view.dart';
+import 'package:gbsub/Features/Home/Ui/widgets/custom_news_container.dart';
+import 'package:gbsub/Features/YourClinicc/Ui/reservation_view.dart';
+import 'package:gbsub/Features/instructions/Logic/instruction_cubit/instruction_cubit.dart';
+import 'package:gbsub/Features/instructions/Ui/instructions_view.dart';
+import 'package:gbsub/Features/instructions/repos/instruction_repo_impl.dart';
+import 'package:gbsub/Features/patients_record/Ui/patient_record_view.dart';
+
+class HomeViewBody extends StatelessWidget {
+  const HomeViewBody({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 8),
+      child: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(
+              height: 20.h,
+            ),
+            CustomServiceRowCustomBodyContinerListView(
+              mainText: 'خدماتنا الطبية',
+              // ignore: deprecated_member_use
+              icon1: FontAwesomeIcons.clinicMedical,
+              icon2: FontAwesomeIcons.solidNoteSticky,
+              icon3: FontAwesomeIcons.pen,
+              text1: 'عيادتك',
+              text2: 'سجل المرضى',
+              text3: 'الارشادات',
+              widget1: ReservationView(),
+              widget2: PatientRecordView(),
+              widget3: BlocProvider(
+                create: (context) =>
+                    InstructionCubit(getIt.get<InstructionRepoImpl>()),
+                child: InstructionsView(),
+              ),
+            ),
+            const CustomServiceRowCustomBodyContinerListView(
+              mainText: 'خدماتنا الالكترونية',
+              icon1: FontAwesomeIcons.personDotsFromLine,
+              icon2: FontAwesomeIcons.disease,
+              icon3: FontAwesomeIcons.capsules,
+              text1: 'تشخيص',
+              text2: 'تنبؤات',
+              text3: 'تعارضات ادوية ',
+              widget1: Text('aa'),
+              widget2: Text('aa'),
+              widget3: Text('aa'),
+            ),
+            const CustomNewsContainer(),
+            SizedBox(
+              height: 20.h,
+            ),
+            GestureDetector(
+                onTap: () {
+                  // Navigator.push(
+                  //   context,
+                  //   MaterialPageRoute(
+                  //     builder: (context) {
+                  //       return const DrugContentView();
+                  //     },
+                  //   ),
+                  // );
+                },
+                child: const CustomMedicalInfoListView()),
+          ],
+        ),
+      ),
+    );
+  }
+}
