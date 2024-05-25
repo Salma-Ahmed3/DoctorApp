@@ -5,13 +5,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gbsub/Core/cubits/bottomnavigationbarcubit/Bottomnavigationbarcubit.dart';
 import 'package:gbsub/Core/networking/networking.dart';
 import 'package:gbsub/Core/services/sharedpref.dart';
-import 'package:gbsub/Core/utils/service_locatro.dart';
 import 'package:gbsub/Features/Home/Ui/Home_view.dart';
 import 'package:gbsub/Features/Login/Ui/login_view.dart';
 
 Future<void> main() async {
-  setupServiceLocator();
-
   WidgetsFlutterBinding.ensureInitialized();
   await Sharedhelper.sharedPreferencesinit();
   HttpOverrides.global = MyHttpOverrides();

@@ -1,9 +1,10 @@
 import 'package:dartz/dartz.dart';
 import 'package:gbsub/Core/utils/Errors/failure.dart';
-import 'package:gbsub/Features/instructions/Model/instruction.dart';
+import 'package:gbsub/Features/instructions/Model/instruction_models.dart';
 
 abstract class InstructionRepo {
-  Future<Either<Failure, List<InstructionModels>>> fetchNameDoctor();
-  Future<Either<Failure, List<InstructionModels>>> fetchSpecDoctor();
-  Future<Either<Failure, List<InstructionModels>>> fetchHealthAdvice();
+  Future<Either<Failure, List<HealthAdviceModel>>> fetchHealthAdvice(
+      {required int pageNum, required int pagesize});
+  Future<Either<Failure, List<HealthAdviceModel>>> fetchHealthAdviceNew(
+      {required int pageNum, required int pagesize});
 }

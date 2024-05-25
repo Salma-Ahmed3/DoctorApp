@@ -7,6 +7,7 @@ import 'package:gbsub/Features/YourClinicc/Ui/Widgets/list_reservation_canceld.d
 
 class ReservationViewBody extends StatelessWidget {
   const ReservationViewBody({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Directionality(
@@ -15,13 +16,13 @@ class ReservationViewBody extends StatelessWidget {
         length: 2,
         child: Scaffold(
           appBar: AppBar(
-            backgroundColor: mainColor,
+            backgroundColor: Colors.white,
             centerTitle: true,
             elevation: 0,
-            iconTheme: const IconThemeData(color: Colors.white),
+            iconTheme: IconThemeData(color: mainColor),
             title: Text(
               "عيادتك",
-              style: Styles.styleBold24.copyWith(color: Colors.white),
+              style: Styles.styleBold24.copyWith(color: mainColor),
             ),
             bottom: TabBar(
               indicatorSize: TabBarIndicatorSize.label,

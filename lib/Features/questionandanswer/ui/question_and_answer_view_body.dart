@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:gbsub/Features/questionandanswer/ui/widgets/custom_question_element.dart';
-import 'package:gbsub/Features/questionandanswer/ui/widgets/custom_tab_bar.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:gbsub/Core/cubits/bottomnavigationbarcubit/Bottomnavigationbarcubit.dart';
+import 'package:gbsub/Core/cubits/bottomnavigationbarcubit/Bottomnavigationvarstates.dart';
+import 'package:gbsub/Core/utils/constans.dart';
+import 'package:gbsub/Core/utils/style.dart';
+import 'package:gbsub/Features/questionandanswer/ui/widgets/custom_custom_question_item_list_view.dart';
 import 'package:gbsub/Features/questionandanswer/ui/widgets/question_upper_body.dart';
 
 class QuestionAndAnswerViewBody extends StatelessWidget {
@@ -9,22 +12,40 @@ class QuestionAndAnswerViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: SingleChildScrollView(
-        child: Column(
-          children: [
-            const QuestionUpperBody(),
-            SizedBox(
-              height: 10.h,
+    var of = BlocProvider.of<NavagationbarCubit>(context);
+    return FutureBuilder(
+      future: of.getAllQuetions(),
+      builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+        return SafeArea(
+          child: SingleChildScrollView(
+            child: BlocBuilder<NavagationbarCubit, BottomNavigationBarStates>(
+              builder: (context, state) {
+                return Column(
+                  children: [
+                    const QuestionUpperBody(),
+                    state is FetchingQuestionLoading
+                        ? Center(
+                            child: CircularProgressIndicator(
+                              color: mainColor,
+                            ),
+                          )
+                        : state is FetchingQuestionSucsess &&
+                                of.questions.isNotEmpty
+                            ? CustomListViewQuestionElement(of: of)
+                            : Center(
+                                child: Text(
+                                  "تأكد من الأتصال بالأنترنت",
+                                  style:
+                                      Styles.style16.copyWith(color: mainColor),
+                                ),
+                              ),
+                  ],
+                );
+              },
             ),
-            const CustomQuestionTabBar(),
-            SizedBox(
-              height: 10.h,
-            ),
-            const CustomQuestionElement()
-          ],
-        ),
-      ),
+          ),
+        );
+      },
     );
   }
 }

@@ -18,7 +18,7 @@ final class InstructionFailure extends InstructionState {
 }
 
 final class InstructionSuccess extends InstructionState {
-  final List<InstructionModels> instruction;
+  final List<HealthAdviceModel> instruction;
 
   const InstructionSuccess(this.instruction);
 }

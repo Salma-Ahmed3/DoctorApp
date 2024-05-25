@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gbsub/Core/utils/constans.dart';
 import 'package:gbsub/core/utils/style.dart';
 
 class CustomBookingViewTap extends StatelessWidget {
@@ -12,7 +13,7 @@ class CustomBookingViewTap extends StatelessWidget {
     return Tab(
       child: Text(
         text,
-        style: Styles.style16.copyWith(color: Colors.white),
+        style: Styles.style16.copyWith(color: mainColor),
       ),
     );
   }

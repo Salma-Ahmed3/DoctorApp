@@ -13,8 +13,8 @@ class CustomButton extends StatelessWidget {
       CustomButtonItem(
         onPressed: () async {},
         text: 'تاكيد الحجز',
-        textcolor: mainColor,
-        buttonColor: Colors.white,
+        textcolor: Colors.white,
+        buttonColor: mainColor,
       ),
       SizedBox(
         width: 10.w,

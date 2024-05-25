@@ -1,21 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:gbsub/Core/utils/service_locatro.dart';
 import 'package:gbsub/Features/Home/Ui/widgets/custom_body_continer_list_view.dart';
 import 'package:gbsub/Features/Home/Ui/widgets/custom_medication_info_list_view.dart';
 import 'package:gbsub/Features/Home/Ui/widgets/custom_news_container.dart';
 import 'package:gbsub/Features/YourClinicc/Ui/reservation_view.dart';
-import 'package:gbsub/Features/instructions/Logic/instruction_cubit/instruction_cubit.dart';
 import 'package:gbsub/Features/instructions/Ui/instructions_view.dart';
-import 'package:gbsub/Features/instructions/repos/instruction_repo_impl.dart';
 import 'package:gbsub/Features/patients_record/Ui/patient_record_view.dart';
 
 class HomeViewBody extends StatelessWidget {
-  const HomeViewBody({
-    super.key,
-  });
+  const HomeViewBody({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +22,7 @@ class HomeViewBody extends StatelessWidget {
             SizedBox(
               height: 20.h,
             ),
-            CustomServiceRowCustomBodyContinerListView(
+            const CustomServiceRowCustomBodyContinerListView(
               mainText: 'خدماتنا الطبية',
               // ignore: deprecated_member_use
               icon1: FontAwesomeIcons.clinicMedical,
@@ -39,11 +33,7 @@ class HomeViewBody extends StatelessWidget {
               text3: 'الارشادات',
               widget1: ReservationView(),
               widget2: PatientRecordView(),
-              widget3: BlocProvider(
-                create: (context) =>
-                    InstructionCubit(getIt.get<InstructionRepoImpl>()),
-                child: InstructionsView(),
-              ),
+              widget3: InstructionsView(),
             ),
             const CustomServiceRowCustomBodyContinerListView(
               mainText: 'خدماتنا الالكترونية',

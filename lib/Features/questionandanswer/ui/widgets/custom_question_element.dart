@@ -1,16 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gbsub/Core/utils/constans.dart';
+import 'package:gbsub/Core/utils/style.dart';
 import 'package:gbsub/Features/profile_page/ui/widgets/custom_profile_view_body_divider.dart';
 import 'package:gbsub/Features/questionandanswer/ui/widgets/custom_doctor_answer.dart';
 import 'package:gbsub/Features/questionandanswer/ui/widgets/cutom_question_gender.dart';
-import 'package:gbsub/core/utils/style.dart';
 
 class CustomQuestionElement extends StatelessWidget {
   const CustomQuestionElement({
     super.key,
+    required this.content,
+    required this.gender,
+    required this.answered,
+    required this.id,
   });
-
+  final String content;
+  final String gender;
+  final bool answered;
+  final int id;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -26,12 +33,14 @@ class CustomQuestionElement extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const CustomQuestionGender(),
+          CustomQuestionGender(
+            gender: gender,
+          ),
           SizedBox(
             height: 20.h,
           ),
           Text(
-            'كيف اتخلص من الزكام في يوم? فأنا طالب ولدي امتحان مهم جدا غدا ',
+            content,
             style: Styles.styleBold16,
           ),
           SizedBox(
@@ -41,7 +50,18 @@ class CustomQuestionElement extends StatelessWidget {
           SizedBox(
             height: 5.h,
           ),
-          const CustomDoctorAnswer(),
+          answered
+              ? CustomDoctorAnswer(
+                  id: id,
+                )
+              : Center(
+                  child: Text(
+                    'لم يتم الأجاية على السؤال بعد',
+                    style: Styles.style16.copyWith(
+                      color: mainColor,
+                    ),
+                  ),
+                ),
           SizedBox(
             height: 10.h,
           )

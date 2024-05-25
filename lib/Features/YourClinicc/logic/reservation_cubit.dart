@@ -1,6 +1,24 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gbsub/Features/YourClinicc/logic/reservation_states.dart';
+import 'package:gbsub/Features/YourClinicc/repos/reservation_repo.dart';
 
 class ReservationCubit extends Cubit<ReservationStates> {
-  ReservationCubit() : super(ReservationInitialState());
+  ReservationCubit(this.reservationRepo) : super(ReservationInitial());
+  final ReservationRepo reservationRepo;
+
+  Future<void> fetchReservation({
+    required int doctorId,
+    //  required bool state
+  }) async {
+    emit(ReservationLoading());
+    var result = await reservationRepo.fetchReservation(
+      doctorId: doctorId,
+      // state: state
+    );
+    result.fold((failure) {
+      emit(ReservationFailure(failure.errMessage));
+    }, (instructionModel) {
+      emit(ReservationSuccess(instructionModel));
+    });
+  }
 }

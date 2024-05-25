@@ -9,12 +9,12 @@ import 'package:gbsub/Features/profile_page/logic/profile_states.dart';
 
 class ProfileCubit extends Cubit<ProfileStates> {
   ProfileCubit() : super(ProfileInitialState());
-
   late ProfileModel profileModel;
-
   final Dio dio = Dio();
+
   Future<void> getprofiledetails(int id) async {
-    var response = await dio.get('$baseUrl/Doctor?id=$id');
+    print(Sharedhelper.getintdata(intkey));
+    var response = await dio.get('$baseUrl/Doctor?id=${id}');
     profileModel = ProfileModel.fromjson(response.data);
   }
 

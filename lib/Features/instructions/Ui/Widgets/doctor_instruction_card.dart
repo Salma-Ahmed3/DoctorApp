@@ -1,61 +1,53 @@
 import 'package:flutter/material.dart';
+import 'package:gbsub/Core/utils/constans.dart';
 import 'package:gbsub/Core/utils/style.dart';
-import 'package:gbsub/Features/instructions/Model/instruction.dart';
+import 'package:gbsub/Features/instructions/Model/instruction_models.dart';
+// import 'package:gbsub/Features/instructions/Model/spec.dart';
 
 class DoctorInstructionCard extends StatelessWidget {
   const DoctorInstructionCard({
     super.key,
-    required this.imageUrl,
     required this.instructionModels,
   });
-  final String imageUrl;
-  final InstructionModels instructionModels;
+
+  final HealthAdviceModel instructionModels;
 
   @override
   Widget build(BuildContext context) {
     return Card(
+      elevation: 1,
       child: Padding(
-        padding: const EdgeInsets.all(20),
+        padding: const EdgeInsets.symmetric(horizontal: 15),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('إرشادات من الدكتور',
-                style: Styles.style16.copyWith(fontSize: 20)),
-            const SizedBox(height: 15),
             Row(
               children: [
+                const SizedBox(height: 100),
                 CircleAvatar(
                   radius: 30,
-                  backgroundImage: NetworkImage(imageUrl),
+                  backgroundImage: NetworkImage(
+                      '$imageUrl${instructionModels.doctor.doctorPic}'),
                 ),
                 const SizedBox(width: 15),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(instructionModels.doctor.name ?? '',
-                        style: Styles.styleBold16),
+                    Text(instructionModels.doctor.doctorName,
+                        style: Styles.style16),
                     const SizedBox(
                       height: 10,
                     ),
-                    Text(instructionModels.spec.name.toString(),
-                        style: Styles.style16),
+                    Text(instructionModels.speciality.spec,
+                        style: Styles.style15),
                   ],
                 ),
               ],
             ),
-            const SizedBox(height: 20),
-            const Text(
-              'إرشادات:',
-              style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
             const SizedBox(height: 10),
-            Center(
-              child: Text(instructionModels.healthAdvice.content ?? '',
-                  style: Styles.style16),
-            ),
+            Text(instructionModels.healthAdvice.content,
+                style: Styles.styleBold16),
+            const SizedBox(height: 20),
           ],
         ),
       ),

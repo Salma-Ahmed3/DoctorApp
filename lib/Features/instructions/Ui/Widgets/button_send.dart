@@ -6,15 +6,15 @@ class ButtonSend extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: ElevatedButton(
+    return Column(children: [
+      ElevatedButton(
         style: ElevatedButton.styleFrom(backgroundColor: mainColor),
         onPressed: () {},
         child: const Text(
-          "إرسال",
+          "نشر",
           style: TextStyle(color: Colors.white, fontSize: 23),
         ),
       ),
-    );
+    ]);
   }
 }

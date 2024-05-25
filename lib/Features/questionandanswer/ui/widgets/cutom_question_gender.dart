@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gbsub/Core/utils/constans.dart';
-import 'package:gbsub/core/utils/style.dart';
+import 'package:gbsub/Core/utils/style.dart';
 
 class CustomQuestionGender extends StatelessWidget {
   const CustomQuestionGender({
     super.key,
+    required this.gender,
   });
+  final String gender;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +22,7 @@ class CustomQuestionGender extends StatelessWidget {
           width: 5.w,
         ),
         Text(
-          'ذكر',
+          gender,
           style: Styles.style16.copyWith(color: mainColor),
         )
       ],

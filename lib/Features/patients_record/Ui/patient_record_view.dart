@@ -8,20 +8,22 @@ class PatientRecordView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Directionality(
-      textDirection: TextDirection.rtl,
-      child: Scaffold(
-        appBar: AppBar(
-          centerTitle: true,
-          elevation: 0,
-          backgroundColor: mainColor,
-          iconTheme: const IconThemeData(color: Colors.white),
-          title: Text(
-            'سجل المرضى',
-            style: Styles.styleBold24.copyWith(color: Colors.white),
+    return SafeArea(
+      child: Directionality(
+        textDirection: TextDirection.rtl,
+        child: Scaffold(
+          appBar: AppBar(
+            centerTitle: true,
+            elevation: 0,
+            backgroundColor: Colors.white,
+            iconTheme: IconThemeData(color: mainColor),
+            title: Text(
+              'سجل المرضى',
+              style: Styles.styleBold24.copyWith(color: mainColor),
+            ),
           ),
+          body: const PatientRecordViewBody(),
         ),
-        body: const PatientRecordViewBody(),
       ),
     );
   }
