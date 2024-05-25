@@ -15,7 +15,7 @@ class ProfileCubit extends Cubit<ProfileStates> {
   Future<void> getprofiledetails(int id) async {
     try {
       print(Sharedhelper.getintdata(intkey));
-      var response = await dio.get('http://webapi.runasp.net/api/Doctor?id=1');
+      var response = await dio.get('$baseUrl/Doctor?id=$id');
       profileModel = ProfileModel.fromjson(response.data);
     } on Exception catch (e) {
       print(e.toString());
