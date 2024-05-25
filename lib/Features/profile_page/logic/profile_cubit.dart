@@ -13,9 +13,13 @@ class ProfileCubit extends Cubit<ProfileStates> {
   final Dio dio = Dio();
 
   Future<void> getprofiledetails(int id) async {
-    print(Sharedhelper.getintdata(intkey));
-    var response = await dio.get('$baseUrl/Doctor?id=${id}');
-    profileModel = ProfileModel.fromjson(response.data);
+    try {
+      print(Sharedhelper.getintdata(intkey));
+      var response = await dio.get('http://webapi.runasp.net/api/Doctor?id=1');
+      profileModel = ProfileModel.fromjson(response.data);
+    } on Exception catch (e) {
+      print(e.toString());
+    }
   }
 
   void logout(context) async {

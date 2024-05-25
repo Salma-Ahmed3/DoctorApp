@@ -11,7 +11,7 @@ import 'package:gbsub/Features/Login/Ui/login_view.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Sharedhelper.sharedPreferencesinit();
-  HttpOverrides.global = MyHttpOverrides();
+
   runApp(const MyApp());
 }
 

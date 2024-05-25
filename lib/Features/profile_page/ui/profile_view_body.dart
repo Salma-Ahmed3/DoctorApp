@@ -12,20 +12,19 @@ class ProfileViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-      future: BlocProvider.of<ProfileCubit>(context).getprofiledetails(
-        Sharedhelper.getintdata(intkey),
-      ),
+      future: BlocProvider.of<ProfileCubit>(context)
+          .getprofiledetails(Sharedhelper.getintdata(intkey)),
       builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
-        if (snapshot.connectionState == ConnectionState.done) {
-          return CustomProfileConatiner(
-              profileModel:
-                  BlocProvider.of<ProfileCubit>(context).profileModel);
-        } else if (snapshot.connectionState == ConnectionState.waiting) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
           return Center(
             child: CircularProgressIndicator(
               color: mainColor,
             ),
           );
+        } else if (snapshot.connectionState == ConnectionState.done) {
+          return CustomProfileConatiner(
+              profileModel:
+                  BlocProvider.of<ProfileCubit>(context).profileModel);
         } else {
           return Center(
             child: Text(
