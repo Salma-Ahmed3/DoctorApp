@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gbsub/Core/services/sharedpref.dart';
 import 'package:gbsub/Core/utils/constans.dart';
 import 'package:gbsub/Features/instructions/Logic/cubit_new_instruction/new_instruction_cubit.dart';
-import 'package:gbsub/Features/instructions/Logic/cubit_new_instruction/new_instruction_state.dart';
 
 class ButtonSend extends StatelessWidget {
   const ButtonSend({super.key});

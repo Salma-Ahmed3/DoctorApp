@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gbsub/Core/utils/style.dart';
-import 'package:gbsub/Features/instructions/Logic/cubit_instruction/instruction_cubit.dart';
 import 'package:gbsub/Features/instructions/Logic/cubit_new_instruction/new_instruction_cubit.dart';
 
 class AddInstraction extends StatelessWidget {
