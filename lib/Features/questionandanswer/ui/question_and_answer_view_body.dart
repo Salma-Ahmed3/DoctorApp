@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gbsub/Core/cubits/bottomnavigationbarcubit/Bottomnavigationbarcubit.dart';
 import 'package:gbsub/Core/cubits/bottomnavigationbarcubit/Bottomnavigationvarstates.dart';
 import 'package:gbsub/Core/utils/constans.dart';
 import 'package:gbsub/Core/utils/style.dart';
 import 'package:gbsub/Features/questionandanswer/ui/widgets/custom_custom_question_item_list_view.dart';
-import 'package:gbsub/Features/questionandanswer/ui/widgets/question_upper_body.dart';
 
 class QuestionAndAnswerViewBody extends StatelessWidget {
   const QuestionAndAnswerViewBody({super.key});
@@ -22,7 +23,6 @@ class QuestionAndAnswerViewBody extends StatelessWidget {
               builder: (context, state) {
                 return Column(
                   children: [
-                    const QuestionUpperBody(),
                     state is FetchingQuestionLoading
                         ? Center(
                             child: CircularProgressIndicator(

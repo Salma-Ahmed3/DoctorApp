@@ -21,10 +21,10 @@ class ListReservation extends StatelessWidget {
               return ListView.builder(
                 physics: const AlwaysScrollableScrollPhysics(),
                 padding: EdgeInsets.zero,
-                itemCount: 15,
+                itemCount: state.reservation.length,
                 itemBuilder: (context, index) {
                   return Padding(
-                    padding: EdgeInsets.only(top: 20),
+                    padding: const EdgeInsets.only(top: 20),
                     child: ListReservationItem(
                       reservationModels: state.reservation[index],
                     ),

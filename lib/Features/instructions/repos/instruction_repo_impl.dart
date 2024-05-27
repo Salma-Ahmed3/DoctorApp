@@ -42,21 +42,12 @@ class InstructionRepoImpl implements InstructionRepo {
   }
 
   @override
-  Future<Either<Failure, List<HealthAdviceModel>>> fetchHealthAdviceNew(
-      {required int pageNum, required int pagesize}) async {
+  Future<Either<Failure, bool>> addNewHealthAdvice(
+      {required int doctorId, required String content}) async {
     try {
-      healthadvices = [];
-      var data = await apiService.get(
-          endPoint: 'HealthAdvice?pageNum=$pageNum&pagesize=$pagesize');
-
-      for (int i = 0; i < data['doctor'].length; i++) {
-        HealthAdviceModel healthAdviceModel = HealthAdviceModel.json(
-            data['healthAdvice'][i], data['doctor'][i], data['spec'][i]);
-        healthadvices.add(healthAdviceModel);
-        print(healthadvices);
-      }
-
-      return right(healthadvices);
+      var response = await apiService.postNoBody(
+          endPoint: '/HealthAdvice?doctorId=$doctorId&content=$content');
+      return right(true);
     } catch (e) {
       if (e is DioError) {
         return left(

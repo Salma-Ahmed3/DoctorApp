@@ -10,9 +10,9 @@ class ReservationModels {
   final String pic;
   final String name;
   final String number;
-  final String spec;
-  final int fee;
-  final String unviersity;
+  // final String spec;
+  // final int fee;
+  // final String unviersity;
 
   const ReservationModels({
     required this.id,
@@ -26,9 +26,9 @@ class ReservationModels {
     required this.pic,
     required this.name,
     required this.number,
-    required this.spec,
-    required this.fee,
-    required this.unviersity,
+    // required this.spec,
+    // required this.fee,
+    // required this.unviersity,
   });
 
   factory ReservationModels.json(json) {
@@ -44,9 +44,9 @@ class ReservationModels {
       pic: json['pic'],
       name: json['name'],
       number: json['number'],
-      spec: json['spec'],
-      fee: json['fee'],
-      unviersity: json['unviersity'],
+      // spec: json['spec'],
+      // fee: json['fee'],
+      // unviersity: json['unviersity'],
     );
   }
 }

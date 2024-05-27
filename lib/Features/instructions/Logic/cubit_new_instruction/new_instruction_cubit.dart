@@ -7,16 +7,22 @@ class NewInstructionCubit extends Cubit<NewInstructionState> {
 
   final InstructionRepo instructionRepo;
 
-  Future<void> fetchHealthAdviceNew(
-      {required int pageNum, required int pagesize}) async {
-    emit(NewInstructionLoading());
-    var result = await instructionRepo.fetchHealthAdviceNew(
-        pageNum: pageNum, pagesize: pagesize);
+  String content = '';
 
+  Future<void> addNewHealthAdvice(
+      {required int doctorId, required String content}) async {
+    emit(NewInstructionLoading());
+    var result = await instructionRepo.addNewHealthAdvice(
+        doctorId: doctorId, content: content);
     result.fold((failure) {
       emit(NewInstructionFailure(failure.errMessage));
     }, (instructionModel) {
       emit(NewInstructionSuccess(instructionModel));
     });
+  }
+
+  void enterHealthAdvice(String value) {
+    content = value;
+    emit(InstructionChanged());
   }
 }

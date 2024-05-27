@@ -1,4 +1,4 @@
-import 'package:gbsub/Features/YourClinicc/Models/reservation.dart';
+import 'package:gbsub/Features/YourClinicc/Models/reservation_models.dart';
 
 abstract class ReservationStates {}
 

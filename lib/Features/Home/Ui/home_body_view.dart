@@ -4,7 +4,10 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:gbsub/Features/Home/Ui/widgets/custom_body_continer_list_view.dart';
 import 'package:gbsub/Features/Home/Ui/widgets/custom_medication_info_list_view.dart';
 import 'package:gbsub/Features/Home/Ui/widgets/custom_news_container.dart';
-import 'package:gbsub/Features/YourClinicc/Ui/reservation_view.dart';
+// import 'package:gbsub/Features/YourClinicc/Ui/reservation_view.dart';
+import 'package:gbsub/Features/YourClinicc/Ui/reservation_view_body.dart';
+import 'package:gbsub/Features/body_parts/ui/diagnosis_view.dart';
+import 'package:gbsub/Features/diabetes_preidiction/ui/diabetes_view.dart';
 import 'package:gbsub/Features/instructions/Ui/instructions_view.dart';
 import 'package:gbsub/Features/patients_record/Ui/patient_record_view.dart';
 
@@ -31,20 +34,21 @@ class HomeViewBody extends StatelessWidget {
               text1: 'عيادتك',
               text2: 'سجل المرضى',
               text3: 'الارشادات',
-              widget1: ReservationView(),
+              // widget1: ReservationView(),
+              widget1: ReservationViewBody(),
               widget2: PatientRecordView(),
               widget3: InstructionsView(),
             ),
             const CustomServiceRowCustomBodyContinerListView(
               mainText: 'خدماتنا الالكترونية',
               icon1: FontAwesomeIcons.personDotsFromLine,
-              icon2: FontAwesomeIcons.disease,
+              icon2: FontAwesomeIcons.glassWaterDroplet,
               icon3: FontAwesomeIcons.capsules,
               text1: 'تشخيص',
-              text2: 'تنبؤات',
+              text2: 'سكر الدم',
               text3: 'تعارضات ادوية ',
-              widget1: Text('aa'),
-              widget2: Text('aa'),
+              widget1: DiagnosisView(),
+              widget2: DiabetesView(),
               widget3: Text('aa'),
             ),
             const CustomNewsContainer(),

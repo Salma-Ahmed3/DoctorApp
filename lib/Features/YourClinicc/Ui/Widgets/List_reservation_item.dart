@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gbsub/Core/utils/constans.dart';
-import 'package:gbsub/Features/YourClinicc/Models/reservation.dart';
+import 'package:gbsub/Features/YourClinicc/Models/reservation_models.dart';
 import 'package:gbsub/Features/YourClinicc/Ui/Widgets/list_item.dart';
 import 'package:gbsub/Features/profile_page/ui/widgets/custom_profile_view_body_divider.dart';
 
@@ -31,7 +31,9 @@ class ListReservationItem extends StatelessWidget {
                 SizedBox(
                   width: 30.w,
                 ),
-                const ListItem(),
+                ListItem(
+                  reservationModels: reservationModels,
+                ),
               ],
             ),
             SizedBox(

@@ -1,5 +1,4 @@
 import 'package:bloc/bloc.dart';
-import 'package:equatable/equatable.dart';
 import 'package:gbsub/Features/instructions/Model/instruction_models.dart';
 import 'package:gbsub/Features/instructions/repos/instruction_repo.dart';
 

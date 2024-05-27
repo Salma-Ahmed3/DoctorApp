@@ -17,14 +17,8 @@ class NavagationbarCubit extends Cubit<BottomNavigationBarStates> {
   bool loggedin = false;
   List<Widget> bottomnavigationbarviews = [
     const HomeViewBody(),
-    const HomeViewBody(),
     const QuestionAndAnswerViewBody(),
     const ProfileView()
-
-    // const NfcViewbody(),
-    // const QuestionsAnswersbdoyview(),
-    // const ReportsBodyview(),
-    // const ProfileViewBody(),
   ];
   void tapped(int index) {
     currentIndex = index;

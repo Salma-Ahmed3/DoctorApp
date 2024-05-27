@@ -1,19 +1,18 @@
+// ignore_for_file: unused_local_variable
+
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:gbsub/Core/services/api_services.dart';
 import 'package:gbsub/Core/utils/Errors/failure.dart';
-import 'package:gbsub/Core/utils/constans.dart';
-import 'package:gbsub/Features/YourClinicc/Models/reservation.dart';
+import 'package:gbsub/Features/YourClinicc/Models/reservation_models.dart';
 import 'package:gbsub/Features/YourClinicc/logic/reservation_states.dart';
 import 'package:gbsub/Features/YourClinicc/repos/reservation_repo.dart';
 
 class ReservationRepoImpl implements ReservationRepo {
-  // final Dio dio;
   final ApiService apiService;
 
-  List<ReservationModels> listOfAppointment = [];
-
   ReservationRepoImpl({required this.apiService});
+  List<ReservationModels> listOfAppointment = [];
 
   @override
   Future<Either<Failure, List<ReservationModels>>> fetchReservation({
@@ -24,10 +23,9 @@ class ReservationRepoImpl implements ReservationRepo {
       listOfAppointment = [];
       var response = await apiService.get(
           endPoint:
-              // '$baseUrl/AppointmentContoller/AppointmentContoller/GetDoctorAppointments?doctorId=$doctorId&state=$state');
-              '/AppointmentContoller/AppointmentContoller/GetDoctorAppointments?doctorId=$doctorId&state=${true}');
+              '/AppointmentContoller/GetDoctorAppointments?doctorId=$doctorId&state=${true}');
       for (var element in response.data) {
-        ReservationModels appointment = ReservationModels.json(element);
+        final appointment = ReservationModels.json(element);
         listOfAppointment.add(appointment);
       }
       return right(listOfAppointment);

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gbsub/Core/utils/style.dart';
+import 'package:gbsub/Features/instructions/Logic/cubit_instruction/instruction_cubit.dart';
+import 'package:gbsub/Features/instructions/Logic/cubit_new_instruction/new_instruction_cubit.dart';
 
 class AddInstraction extends StatelessWidget {
   const AddInstraction({super.key});
@@ -22,12 +25,14 @@ class AddInstraction extends StatelessWidget {
               return null;
             }
           },
-          // onFieldSubmitted: (value) {
-          //   // of.enterQuestion(value);
-          // },
-          // onChanged: (value) {
-          //   // of.enterQuestion(value);
-          // },
+          onSaved: (value) {
+            BlocProvider.of<NewInstructionCubit>(context)
+                .enterHealthAdvice(value!);
+          },
+          onChanged: (value) {
+            BlocProvider.of<NewInstructionCubit>(context)
+                .enterHealthAdvice(value);
+          },
           textDirection: TextDirection.rtl,
           decoration: InputDecoration(
             hintStyle: Styles.style16.copyWith(color: Colors.grey.shade400),

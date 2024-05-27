@@ -4,6 +4,7 @@ import 'package:gbsub/Features/YourClinicc/repos/reservation_repo.dart';
 
 class ReservationCubit extends Cubit<ReservationStates> {
   ReservationCubit(this.reservationRepo) : super(ReservationInitial());
+
   final ReservationRepo reservationRepo;
 
   Future<void> fetchReservation({
@@ -15,10 +16,32 @@ class ReservationCubit extends Cubit<ReservationStates> {
       doctorId: doctorId,
       // state: state
     );
-    result.fold((failure) {
-      emit(ReservationFailure(failure.errMessage));
-    }, (instructionModel) {
-      emit(ReservationSuccess(instructionModel));
-    });
+    result.fold(
+      (failure) {
+        emit(ReservationFailure(failure.errMessage));
+      },
+      (reservationModel) {
+        emit(ReservationSuccess(reservationModel));
+      },
+    );
+  }
+
+  Future<void> deleteAppointments({
+    required int appointmentid,
+    //  required bool state
+  }) async {
+    emit(ReservationLoading());
+    var result = await reservationRepo.deleteAppointments(
+      appointmentid: appointmentid,
+      // state: state
+    );
+    result.fold(
+      (failure) {
+        emit(ReservationFailure(failure.errMessage));
+      },
+      (reservationModel) {
+        emit(ReservationSuccess(reservationModel));
+      },
+    );
   }
 }

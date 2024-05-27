@@ -1,5 +1,4 @@
 import 'package:equatable/equatable.dart';
-import 'package:gbsub/Features/instructions/Model/instruction_models.dart';
 
 sealed class NewInstructionState extends Equatable {
   const NewInstructionState();
@@ -10,6 +9,8 @@ sealed class NewInstructionState extends Equatable {
 
 final class NewInstructionInitial extends NewInstructionState {}
 
+final class InstructionChanged extends NewInstructionState {}
+
 final class NewInstructionLoading extends NewInstructionState {}
 
 final class NewInstructionFailure extends NewInstructionState {
@@ -19,7 +20,7 @@ final class NewInstructionFailure extends NewInstructionState {
 }
 
 final class NewInstructionSuccess extends NewInstructionState {
-  final List<HealthAdviceModel> instruction;
+  final bool newinstruction;
 
-  const NewInstructionSuccess(this.instruction);
+  const NewInstructionSuccess(this.newinstruction);
 }

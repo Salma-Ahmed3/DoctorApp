@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gbsub/Core/utils/constans.dart';
 import 'package:gbsub/Core/utils/style.dart';
+import 'package:gbsub/Features/YourClinicc/Ui/Widgets/custom_button_item.dart';
 import 'package:gbsub/Features/profile_page/ui/widgets/custom_profile_view_body_divider.dart';
+import 'package:gbsub/Features/questionandanswer/ui/widgets/custom_answer_question.dart';
 import 'package:gbsub/Features/questionandanswer/ui/widgets/custom_doctor_answer.dart';
 import 'package:gbsub/Features/questionandanswer/ui/widgets/cutom_question_gender.dart';
 
@@ -21,9 +23,9 @@ class CustomQuestionElement extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 20.h),
+      margin: EdgeInsets.symmetric(horizontal: 20.h, vertical: 10.h),
       width: double.infinity,
-      padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.h),
+      padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 20.h),
       decoration: ShapeDecoration(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(8),
@@ -33,6 +35,9 @@ class CustomQuestionElement extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          SizedBox(
+            height: 20.h,
+          ),
           CustomQuestionGender(
             gender: gender,
           ),
@@ -55,11 +60,18 @@ class CustomQuestionElement extends StatelessWidget {
                   id: id,
                 )
               : Center(
-                  child: Text(
-                    'لم يتم الأجاية على السؤال بعد',
-                    style: Styles.style16.copyWith(
-                      color: mainColor,
-                    ),
+                  child: CustomButtonItem(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => AnswerQuestion(),
+                        ),
+                      );
+                    },
+                    text: 'لم يتم الإجابة على السؤال بعد',
+                    textcolor: mainColor,
+                    buttonColor: Colors.white,
                   ),
                 ),
           SizedBox(

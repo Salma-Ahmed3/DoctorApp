@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:gbsub/Core/utils/constans.dart';
 import 'package:gbsub/Core/utils/style.dart';
 import 'package:gbsub/Features/instructions/Model/instruction_models.dart';
-// import 'package:gbsub/Features/instructions/Model/spec.dart';
 
 class DoctorInstructionCard extends StatelessWidget {
   const DoctorInstructionCard({
@@ -26,8 +24,9 @@ class DoctorInstructionCard extends StatelessWidget {
                 const SizedBox(height: 100),
                 CircleAvatar(
                   radius: 30,
-                  backgroundImage: NetworkImage(
-                      '$imageUrl${instructionModels.doctor.doctorPic}'),
+                  backgroundImage:
+                      NetworkImage(instructionModels.doctor.doctorPic),
+                  // '$imageUrl${instructionModels.doctor.doctorPic}'),
                 ),
                 const SizedBox(width: 15),
                 Column(

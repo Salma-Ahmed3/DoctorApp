@@ -5,7 +5,7 @@ class ProfileModel {
   final int id;
   final String password;
   final String birthDate;
-  final int phoneNumber;
+  final String phoneNumber;
   final String city;
   final String universiry;
   final String location;
