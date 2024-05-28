@@ -8,8 +8,8 @@ import 'package:gbsub/Core/services/sharedpref.dart';
 import 'package:gbsub/Core/utils/constans.dart';
 import 'package:gbsub/Features/Home/Ui/home_body_view.dart';
 import 'package:gbsub/Features/profile_page/ui/profile_view.dart';
-import 'package:gbsub/Features/questionandanswer/Models/question_models.dart';
-import 'package:gbsub/Features/questionandanswer/ui/question_and_answer_view_body.dart';
+import 'package:gbsub/Features/questionandanswer/Question/Models/question_models.dart';
+import 'package:gbsub/Features/questionandanswer/Question/ui/question_and_answer_view_body.dart';
 
 class NavagationbarCubit extends Cubit<BottomNavigationBarStates> {
   NavagationbarCubit() : super(InitialState());

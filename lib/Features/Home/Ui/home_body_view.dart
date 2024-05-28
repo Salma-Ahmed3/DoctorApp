@@ -8,7 +8,7 @@ import 'package:gbsub/Features/Home/Ui/widgets/custom_news_container.dart';
 import 'package:gbsub/Features/YourClinicc/Ui/reservation_view_body.dart';
 import 'package:gbsub/Features/body_parts/ui/diagnosis_view.dart';
 import 'package:gbsub/Features/diabetes_preidiction/ui/diabetes_view.dart';
-import 'package:gbsub/Features/instructions/Ui/instructions_view.dart';
+import 'package:gbsub/Features/instructions/health_advice/Ui/instructions_view.dart';
 import 'package:gbsub/Features/patients_record/Ui/patient_record_view.dart';
 
 class HomeViewBody extends StatelessWidget {

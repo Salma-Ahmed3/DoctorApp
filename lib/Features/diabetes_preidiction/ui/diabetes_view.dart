@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:gbsub/Features/asnwer/ui/CustomAppbar.dart';
+import 'package:gbsub/Features/questionandanswer/asnwer/ui/CustomAppbar.dart';
 import 'package:gbsub/Features/diabetes_preidiction/logic/diabetes_cubit.dart';
 import 'package:gbsub/Features/diabetes_preidiction/ui/diabetes_view_body.dart';
 

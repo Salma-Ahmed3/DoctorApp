@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:gbsub/Features/asnwer/ui/CustomAppbar.dart';
+import 'package:gbsub/Features/questionandanswer/asnwer/ui/CustomAppbar.dart';
 import 'package:gbsub/Features/syptoms_for_body_part/logic/syptoms_cubit.dart';
 import 'package:gbsub/Features/syptoms_for_body_part/ui/syptoms_view_body.dart';
 
