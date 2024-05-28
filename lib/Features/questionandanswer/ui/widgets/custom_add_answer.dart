@@ -22,12 +22,12 @@ class AddAnswer extends StatelessWidget {
               return null;
             }
           },
-          // onFieldSubmitted: (value) {
-          //   // of.enterQuestion(value);
-          // },
-          // onChanged: (value) {
-          //   // of.enterQuestion(value);
-          // },
+          onFieldSubmitted: (value) {
+            // of.enterQuestion(value);
+          },
+          onChanged: (value) {
+            // of.enterQuestion(value);
+          },
           textDirection: TextDirection.rtl,
           decoration: InputDecoration(
             hintStyle: Styles.style16.copyWith(color: Colors.grey.shade400),

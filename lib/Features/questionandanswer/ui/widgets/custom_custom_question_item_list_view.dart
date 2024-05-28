@@ -9,7 +9,6 @@ class CustomListViewQuestionElement extends StatelessWidget {
     super.key,
     required this.of,
   });
-
   final NavagationbarCubit of;
 
   @override

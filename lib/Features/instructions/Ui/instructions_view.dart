@@ -5,7 +5,7 @@ import 'package:gbsub/Core/services/api_services.dart';
 import 'package:gbsub/Core/utils/constans.dart';
 import 'package:gbsub/Core/utils/style.dart';
 import 'package:gbsub/Features/instructions/Logic/cubit_instruction/instruction_cubit.dart';
-import 'package:gbsub/Features/instructions/Ui/Widgets/instruction_page.dart';
+import 'package:gbsub/Features/add_new_instruction.dart/ui/adding_instruction_view.dart';
 import 'package:gbsub/Features/instructions/Ui/instructions_view_body.dart';
 import 'package:gbsub/Features/instructions/repos/instruction_repo_impl.dart';
 
@@ -40,10 +40,10 @@ class InstructionsView extends StatelessWidget {
                       size: 28,
                     ),
                     onPressed: () {
-                      Navigator.push(
+                      Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(builder: (context) {
-                          return InstructionPage();
+                          return const AddingInstructionView();
                         }),
                       );
                     },

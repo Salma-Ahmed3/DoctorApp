@@ -35,9 +35,9 @@ class CustomQuestionElement extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(
-            height: 20.h,
-          ),
+          // SizedBox(
+          //   height: 20.h,
+          // ),
           CustomQuestionGender(
             gender: gender,
           ),

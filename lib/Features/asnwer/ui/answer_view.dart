@@ -14,7 +14,7 @@ class AnswerView extends StatelessWidget {
       child: Directionality(
         textDirection: TextDirection.rtl,
         child: Scaffold(
-          appBar: const CustomAppbar(title: 'الأجابة'),
+          appBar: const CustomAppbar(title: 'الإجابة'),
           body: AnswerViewBody(
             id: id,
           ),
