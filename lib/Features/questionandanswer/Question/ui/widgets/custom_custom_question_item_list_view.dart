@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:gbsub/Core/cubits/bottomnavigationbarcubit/Bottomnavigationbarcubit.dart';
-
+import 'package:gbsub/Core/cubits/bottomnavigationbarcubit/MainCubi.dart';
 import 'package:gbsub/Features/questionandanswer/Question/ui/widgets/custom_question_element.dart';
 
 class CustomListViewQuestionElement extends StatelessWidget {

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:gbsub/Core/cubits/bottomnavigationbarcubit/Bottomnavigationbarcubit.dart';
-import 'package:gbsub/Core/cubits/bottomnavigationbarcubit/Bottomnavigationvarstates.dart';
+import 'package:gbsub/Core/cubits/bottomnavigationbarcubit/MainCubi.dart';
+import 'package:gbsub/Core/cubits/bottomnavigationbarcubit/MainStates.dart';
 import 'package:gbsub/Core/utils/constans.dart';
 import 'package:gbsub/Core/utils/style.dart';
 

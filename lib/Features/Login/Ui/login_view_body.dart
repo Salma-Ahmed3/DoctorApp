@@ -88,12 +88,15 @@ class LoginViewBody extends StatelessWidget {
                               var bool = await of.login(Dio());
                               if (bool) {
                                 customSnackBar(
-                                    context, 'تم ستجيل الدخول بنجاح اهلا بك');
+                                    // ignore: use_build_context_synchronously
+                                    context,
+                                    'تم ستجيل الدخول بنجاح اهلا بك');
                                 Sharedhelper.putBooldata(boolkey, true);
                                 Sharedhelper.putIntdata(intkey, of.id);
 
                                 // ignore: use_build_context_synchronously
                                 Navigator.pushReplacement(
+                                  // ignore: use_build_context_synchronously
                                   context,
                                   MaterialPageRoute(
                                     builder: (context) {
@@ -102,6 +105,7 @@ class LoginViewBody extends StatelessWidget {
                                   ),
                                 );
                               } else {
+                                // ignore: use_build_context_synchronously
                                 customSnackBar(context,
                                     'خطأ في تسجيل الدخول حاول مرة وتأكد من صحة كلمة السر والايميل');
                               }

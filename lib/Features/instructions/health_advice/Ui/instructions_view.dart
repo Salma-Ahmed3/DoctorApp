@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gbsub/Core/services/api_services.dart';
 import 'package:gbsub/Core/utils/constans.dart';
 import 'package:gbsub/Core/utils/style.dart';
-import 'package:gbsub/Features/instructions/health_advice/Logic/cubit_instruction/instruction_cubit.dart';
+import 'package:gbsub/Features/instructions/health_advice/Logic/instruction_cubit.dart';
 import 'package:gbsub/Features/instructions/add_new_instruction.dart/ui/adding_instruction_view.dart';
 import 'package:gbsub/Features/instructions/health_advice/Ui/instructions_view_body.dart';
 import 'package:gbsub/Features/instructions/health_advice/repos/instruction_repo_impl.dart';

@@ -45,7 +45,7 @@ class CustomProfileConatiner extends StatelessWidget {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => PatientRecordView(),
+                    builder: (context) => const PatientRecordView(),
                   ),
                 );
               },

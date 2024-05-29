@@ -3,7 +3,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:gbsub/Core/cubits/bottomnavigationbarcubit/Bottomnavigationvarstates.dart';
+import 'package:gbsub/Core/cubits/bottomnavigationbarcubit/MainStates.dart';
 import 'package:gbsub/Core/services/sharedpref.dart';
 import 'package:gbsub/Core/utils/constans.dart';
 import 'package:gbsub/Features/Home/Ui/home_body_view.dart';
