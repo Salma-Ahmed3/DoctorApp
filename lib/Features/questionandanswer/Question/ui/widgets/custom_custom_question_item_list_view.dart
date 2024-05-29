@@ -9,12 +9,11 @@ class CustomListViewQuestionElement extends StatelessWidget {
     super.key,
     required this.of,
   });
-  final NavagationbarCubit of;
+  final MainCubit of;
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: MediaQuery.of(context).size.height * 0.6,
       child: ListView.separated(
         itemBuilder: (BuildContext context, int index) {
           return CustomQuestionElement(

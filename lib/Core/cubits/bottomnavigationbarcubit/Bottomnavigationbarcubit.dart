@@ -11,8 +11,8 @@ import 'package:gbsub/Features/profile_page/ui/profile_view.dart';
 import 'package:gbsub/Features/questionandanswer/Question/Models/question_models.dart';
 import 'package:gbsub/Features/questionandanswer/Question/ui/question_and_answer_view_body.dart';
 
-class NavagationbarCubit extends Cubit<BottomNavigationBarStates> {
-  NavagationbarCubit() : super(InitialState());
+class MainCubit extends Cubit<mainStates> {
+  MainCubit() : super(InitialState());
   int currentIndex = 0;
   bool loggedin = false;
   List<Widget> bottomnavigationbarviews = [
@@ -45,47 +45,48 @@ class NavagationbarCubit extends Cubit<BottomNavigationBarStates> {
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
   final GlobalKey<FormState> formkey = GlobalKey();
 
-  void enterQuestion(String value) {
-    question = value;
-    emit(QuestionEntered());
-  }
+  // void enterQuestion(String value) {
+  //   question = value;
+  //   emit(QuestionEntered());
+  // }
 
-  void publicquestionTapped() {
-    if (publicquestions) {
-    } else {
-      publicquestions = true;
-      emit(PublicQuestionTapped());
-    }
-  }
+  // void publicquestionTapped() {
+  //   if (publicquestions) {
+  //   } else {
+  //     publicquestions = true;
+  //     emit(PublicQuestionTapped());
+  //   }
+  // }
 
-  void myquestionTapped() {
-    if (!publicquestions) {
-    } else {
-      publicquestions = false;
-      emit(Myquestionstapped());
-    }
-  }
+  // void myquestionTapped() {
+  //   if (!publicquestions) {
+  //   } else {
+  //     publicquestions = false;
+  //     emit(Myquestionstapped());
+  //   }
+  // }
 
-  Future<bool> postQUestion(int userId) async {
-    final dio = Dio();
-    publicquestions = true;
-    try {
-      emit(FetchingQuestionLoading());
-      dio.post('$baseUrl/Question?content=$question&User=$userId');
-      emit(FetchingQuestionSucsess());
-      return true;
-    } catch (erorr) {
-      emit(FetchingQuestionFailing());
-      return false;
-    }
-  }
+  // Future<bool> postQUestion(int userId) async {
+  //   final dio = Dio();
+  //   publicquestions = true;
+  //   try {
+  //     emit(FetchingQuestionLoading());
+  //     dio.post('$baseUrl/Question?content=$question&User=$userId');
+  //     emit(FetchingQuestionSucsess());
+  //     return true;
+  //   } catch (erorr) {
+  //     emit(FetchingQuestionFailing());
+  //     return false;
+  //   }
+  // }
 
-  Future<List<QuestionDetails>> getAllQuetions() async {
+  Future<List<QuestionDetails>> getQuetions() async {
     final dio = Dio();
     questions = [];
     try {
       emit(FetchingQuestionLoading());
       var response = await dio.get('$baseUrl/Question?pagesize=10&pageNum=1');
+      print(response.data['question'].length);
 
       for (int i = 0; i < response.data['question'].length; i++) {
         QuestionDetails questionDetails = QuestionDetails.json(
@@ -93,33 +94,35 @@ class NavagationbarCubit extends Cubit<BottomNavigationBarStates> {
 
         questions.add(questionDetails);
       }
+
       emit(FetchingQuestionSucsess());
       return questions;
     } on Exception catch (e) {
+      print(e.toString());
       emit(FetchingQuestionFailing());
       return [];
     }
   }
 
-  Future<List<QuestionDetails>> getMyQuetions() async {
-    final dio = Dio();
-    questions = [];
-    try {
-      emit(FetchingQuestionLoading());
-      var response = await dio.get(
-          '$baseUrl/Question/userQuestions?id=${Sharedhelper.getintdata(intkey)}&pagesize=10&pageNum=1');
+  // Future<List<QuestionDetails>> getMyQuetions() async {
+  //   final dio = Dio();
+  //   questions = [];
+  //   try {
+  //     emit(FetchingQuestionLoading());
+  //     var response = await dio.get(
+  //         '$baseUrl/Question/userQuestions?id=${Sharedhelper.getintdata(intkey)}&pagesize=10&pageNum=1');
 
-      for (int i = 0; i < response.data['question'].length; i++) {
-        QuestionDetails questionDetails = QuestionDetails.json(
-            response.data['question'][i], response.data['user'][i]);
+  //     for (int i = 0; i < response.data['question'].length; i++) {
+  //       QuestionDetails questionDetails = QuestionDetails.json(
+  //           response.data['question'][i], response.data['user'][i]);
 
-        questions.add(questionDetails);
-      }
-      emit(FetchingQuestionSucsess());
-      return questions;
-    } on Exception catch (e) {
-      emit(FetchingQuestionFailing());
-      return [];
-    }
-  }
+  //       questions.add(questionDetails);
+  //     }
+  //     emit(FetchingQuestionSucsess());
+  //     return questions;
+  //   } on Exception catch (e) {
+  //     emit(FetchingQuestionFailing());
+  //     return [];
+  //   }
+  // }
 }

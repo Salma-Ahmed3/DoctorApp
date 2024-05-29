@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gbsub/Core/utils/style.dart';
+import 'package:gbsub/Features/questionandanswer/asnwer/logic/answer_qustion/answer_question_cubit.dart';
 
 class AddAnswer extends StatelessWidget {
   const AddAnswer({super.key});
@@ -22,11 +24,11 @@ class AddAnswer extends StatelessWidget {
               return null;
             }
           },
-          onFieldSubmitted: (value) {
-            // of.enterQuestion(value);
+          onSaved: (value) {
+            BlocProvider.of<AnswerQuestionCubit>(context).enterAnswer(value!);
           },
           onChanged: (value) {
-            // of.enterQuestion(value);
+            BlocProvider.of<AnswerQuestionCubit>(context).enterAnswer(value);
           },
           textDirection: TextDirection.rtl,
           decoration: InputDecoration(

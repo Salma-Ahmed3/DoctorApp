@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(
           create: (context) =>
-              NavagationbarCubit()..LoggedInfun(state: Sharedhelper.loggedIN),
+              MainCubit()..LoggedInfun(state: Sharedhelper.loggedIN),
         ),
       ],
       child: ScreenUtilInit(
@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
         minTextAdapt: true,
         builder: (context, child) => MaterialApp(
           debugShowCheckedModeBanner: false,
-          home: BlocProvider.of<NavagationbarCubit>(context).loggedin
+          home: BlocProvider.of<MainCubit>(context).loggedin
               ? const HomeView()
               : const LoginView(),
         ),

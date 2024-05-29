@@ -1,21 +1,21 @@
-abstract class BottomNavigationBarStates {}
+abstract class mainStates {}
 
-class InitialState extends BottomNavigationBarStates {}
+class InitialState extends mainStates {}
 
-class TappedState extends BottomNavigationBarStates {}
+class TappedState extends mainStates {}
 
-class LoggedIn extends BottomNavigationBarStates {}
+class LoggedIn extends mainStates {}
 
-class QuestionAndAnswerInitialState extends BottomNavigationBarStates {}
+class QuestionAndAnswerInitialState extends mainStates {}
 
-class QuestionEntered extends BottomNavigationBarStates {}
+class QuestionEntered extends mainStates {}
 
-class FetchingQuestionLoading extends BottomNavigationBarStates {}
+class FetchingQuestionLoading extends mainStates {}
 
-class FetchingQuestionSucsess extends BottomNavigationBarStates {}
+class FetchingQuestionSucsess extends mainStates {}
 
-class FetchingQuestionFailing extends BottomNavigationBarStates {}
+class FetchingQuestionFailing extends mainStates {}
 
-class PublicQuestionTapped extends BottomNavigationBarStates {}
+class PublicQuestionTapped extends mainStates {}
 
-class Myquestionstapped extends BottomNavigationBarStates {}
+class Myquestionstapped extends mainStates {}

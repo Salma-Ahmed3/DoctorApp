@@ -14,7 +14,7 @@ class CustomBottomNavBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<NavagationbarCubit, BottomNavigationBarStates>(
+    return BlocBuilder<MainCubit, mainStates>(
       builder: (context, state) {
         return BottomNavigationBar(
           selectedLabelStyle: Styles.style13,
@@ -26,10 +26,9 @@ class CustomBottomNavBar extends StatelessWidget {
           unselectedItemColor: Colors.black,
           type: BottomNavigationBarType.fixed,
           onTap: (index) {
-            BlocProvider.of<NavagationbarCubit>(context).tapped(index);
+            BlocProvider.of<MainCubit>(context).tapped(index);
           },
-          currentIndex:
-              BlocProvider.of<NavagationbarCubit>(context).currentIndex,
+          currentIndex: BlocProvider.of<MainCubit>(context).currentIndex,
           items: const [
             BottomNavigationBarItem(
               icon: Icon(

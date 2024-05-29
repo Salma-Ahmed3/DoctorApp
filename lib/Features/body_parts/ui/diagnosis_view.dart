@@ -16,7 +16,7 @@ class DiagnosisView extends StatelessWidget {
       create: (context) => DiagnosisCubit(),
       child: Directionality(
         textDirection: TextDirection.rtl,
-        child: BlocBuilder<NavagationbarCubit, BottomNavigationBarStates>(
+        child: BlocBuilder<MainCubit, mainStates>(
           builder: (context, state) {
             return Scaffold(
               appBar: AppBar(
