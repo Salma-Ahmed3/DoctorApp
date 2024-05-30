@@ -26,7 +26,6 @@ class CustomButtonSend extends StatelessWidget {
               doctorId: Sharedhelper.getintdata(intkey),
               content: BlocProvider.of<AnswerQuestionCubit>(context).content,
             );
-            await BlocProvider.of<MainCubit>(context).getQuetions();
             Navigator.pop(context);
             await BlocProvider.of<MainCubit>(context).getQuetions();
           } else {

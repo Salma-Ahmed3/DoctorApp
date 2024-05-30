@@ -6,10 +6,6 @@ import 'package:gbsub/Features/questionandanswer/asnwer/logic/answer/answer_stat
 
 class AnswerCubit extends Cubit<AnswerStates> {
   AnswerCubit(questionAndAnswerRepoImpl) : super(AnswerInitialStates());
-  // String content = '';
-  // AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
-  // final GlobalKey<FormState> formkey = GlobalKey();
-
   late AnswerModel answerModel;
   Future<AnswerModel> getANswerForQuestion(int id) async {
     final dio = Dio();
