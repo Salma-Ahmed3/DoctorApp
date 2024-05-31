@@ -5,7 +5,7 @@ import 'package:gbsub/Features/Home/Ui/widgets/custom_body_continer_list_view.da
 import 'package:gbsub/Features/Home/Ui/widgets/custom_medication_info_list_view.dart';
 import 'package:gbsub/Features/Home/Ui/widgets/custom_news_container.dart';
 // import 'package:gbsub/Features/YourClinicc/Ui/reservation_view.dart';
-import 'package:gbsub/Features/YourClinicc/Ui/reservation_view_body.dart';
+import 'package:gbsub/Features/YourClinicc/Ui/reservation_view.dart';
 import 'package:gbsub/Features/body_parts/ui/diagnosis_view.dart';
 import 'package:gbsub/Features/diabetes_preidiction/ui/diabetes_view.dart';
 import 'package:gbsub/Features/instructions/health_advice/Ui/instructions_view.dart';
@@ -34,8 +34,7 @@ class HomeViewBody extends StatelessWidget {
               text1: 'عيادتك',
               text2: 'سجل المرضى',
               text3: 'الارشادات',
-              // widget1: ReservationView(),
-              widget1: ReservationViewBody(),
+              widget1: ReservationView(),
               widget2: PatientRecordView(),
               widget3: InstructionsView(),
             ),

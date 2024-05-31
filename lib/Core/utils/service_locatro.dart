@@ -1,11 +1,17 @@
-// import 'package:dio/dio.dart';
-// import 'package:gbsub/Core/services/api_services.dart';
-// import 'package:gbsub/Features/instructions/repos/instruction_repo_impl.dart';
-// import 'package:get_it/get_it.dart';
+import 'package:dio/dio.dart';
+import 'package:gbsub/Core/services/api_services.dart';
+import 'package:gbsub/Features/YourClinicc/repos/reservation_repo_impl.dart';
+import 'package:get_it/get_it.dart';
 
-// final getIt = GetIt.instance;
+final getIt = GetIt.instance;
 
-// // void setupServiceLocator() {
-// //   // ApiService(Dio());
-// //   InstructionRepoImpl(apiService: ApiService(Dio()));
-// // }
+void setupServiceLocator() {
+  getIt.registerSingleton<ApiService>(ApiService(Dio()));
+  getIt.registerSingleton<ReservationRepoImpl>(
+    ReservationRepoImpl(
+      apiService: ApiService(
+        Dio(),
+      ),
+    ),
+  );
+}

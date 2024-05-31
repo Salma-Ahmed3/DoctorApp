@@ -1,8 +1,12 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:gbsub/Core/utils/Errors/Widgets/custom_error_widget.dart';
+import 'package:gbsub/Core/cubits/bottomnavigationbarcubit/MainCubi.dart';
+import 'package:gbsub/Core/services/sharedpref.dart';
 import 'package:gbsub/Core/utils/constans.dart';
-import 'package:gbsub/Features/YourClinicc/Ui/Widgets/list_reservation_canceld_item.dart';
+import 'package:gbsub/Core/utils/style.dart';
+import 'package:gbsub/Features/YourClinicc/Ui/Widgets/success_empty_body.dart';
+import 'package:gbsub/Features/YourClinicc/Ui/Widgets/success_has_data_body.dart';
 import 'package:gbsub/Features/YourClinicc/logic/reservation_cubit.dart';
 import 'package:gbsub/Features/YourClinicc/logic/reservation_states.dart';
 
@@ -11,36 +15,38 @@ class ListReservationCanceld extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder(
-      future: BlocProvider.of<ReservationCubit>(context)
-          .deleteAppointments(appointmentid: 1),
-      builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
-        return BlocBuilder<ReservationCubit, ReservationStates>(
-          builder: (context, state) {
-            if (state is ReservationSuccess) {
-              return ListView.builder(
-                physics: const AlwaysScrollableScrollPhysics(),
-                padding: EdgeInsets.zero,
-                itemCount: 15,
-                itemBuilder: (context, index) {
-                  return Padding(
-                    padding: const EdgeInsets.only(top: 20),
-                    child: ListReservationCanceldItem(
-                      reservationModels: state.reservation[index],
-                    ),
-                  );
-                },
-              );
-            } else if (state is ReservationFailure) {
-              return CustomErrorWidget(errMessage: state.errMessege);
-            } else {
-              return Center(
-                child: CircularProgressIndicator(
-                  color: mainColor,
-                ),
-              );
-            }
-          },
+    return BlocBuilder<ReservationCubit, ReservationStates>(
+      builder: (context, state) {
+        return BlocProvider(
+          create: (context) => MainCubit(),
+          child: FutureBuilder(
+            future: ReservationCubit(dio: Dio())
+                .fetchReservationDone(Sharedhelper.getintdata(intkey), true),
+            builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return Center(
+                  child: CircularProgressIndicator(
+                    color: mainColor,
+                  ),
+                );
+              } else if (snapshot.connectionState == ConnectionState.done) {
+                return snapshot.data.isEmpty
+                    ? const ScuccesEmptyBody(
+                        text: 'لا توجد حجوزات ملغية',
+                      )
+                    : SucessBody(
+                        reservationModels: snapshot.data,
+                      );
+              } else {
+                return Center(
+                  child: Text(
+                    'لا توجد مواعيد ',
+                    style: Styles.styleBold24.copyWith(color: mainColor),
+                  ),
+                );
+              }
+            },
+          ),
         );
       },
     );

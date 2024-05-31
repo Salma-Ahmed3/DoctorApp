@@ -1,47 +1,40 @@
+import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:gbsub/Core/utils/constans.dart';
+import 'package:gbsub/Features/YourClinicc/Models/reservation_models.dart';
 import 'package:gbsub/Features/YourClinicc/logic/reservation_states.dart';
-import 'package:gbsub/Features/YourClinicc/repos/reservation_repo.dart';
 
 class ReservationCubit extends Cubit<ReservationStates> {
-  ReservationCubit(this.reservationRepo) : super(ReservationInitial());
+  ReservationCubit({required this.dio}) : super(ReservationInitial());
+  final Dio dio;
+  List<ReservationModels> listreservation = [];
+  Future<List<ReservationModels>> fetchReservationDone(
+      int doctorId, bool state) async {
+    try {
+      listreservation = [];
+      var response = await dio.get(
+          '$baseUrl/AppointmentContoller/GetDoctorAppointments?doctorId=$doctorId&state=$state');
 
-  final ReservationRepo reservationRepo;
-
-  Future<void> fetchReservation({
-    required int doctorId,
-    //  required bool state
-  }) async {
-    emit(ReservationLoading());
-    var result = await reservationRepo.fetchReservation(
-      doctorId: doctorId,
-      // state: state
-    );
-    result.fold(
-      (failure) {
-        emit(ReservationFailure(failure.errMessage));
-      },
-      (reservationModel) {
-        emit(ReservationSuccess(reservationModel));
-      },
-    );
+      for (var element in response.data) {
+        ReservationModels instruction = ReservationModels.json(element);
+        listreservation.add(instruction);
+        print(listreservation);
+      }
+      emit(ReservationDelete());
+      return listreservation;
+    } catch (ex) {
+      return [];
+    }
   }
 
-  Future<void> deleteAppointments({
-    required int appointmentid,
-    //  required bool state
-  }) async {
-    emit(ReservationLoading());
-    var result = await reservationRepo.deleteAppointments(
-      appointmentid: appointmentid,
-      // state: state
-    );
-    result.fold(
-      (failure) {
-        emit(ReservationFailure(failure.errMessage));
-      },
-      (reservationModel) {
-        emit(ReservationSuccess(reservationModel));
-      },
-    );
+  Future<bool> deleteAppointments(int appointmentid) async {
+    try {
+      var response = await dio
+          .delete('$baseUrl/AppointmentContoller?AppontmentId=$appointmentid');
+      emit(ReservationDelete());
+      return response.data;
+    } catch (ex) {
+      return false;
+    }
   }
 }
