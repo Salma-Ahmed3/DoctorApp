@@ -13,7 +13,9 @@ class ReservationCubit extends Cubit<ReservationStates> {
     try {
       listreservation = [];
       var response = await dio.get(
-          '$baseUrl/AppointmentContoller/GetDoctorAppointments?doctorId=$doctorId&state=$state');
+          // '$baseUrl/AppointmentContoller/GetDoctorAppointments?doctorId=$doctorId&state=$state');
+          '$baseUrl/AppointmentContoller/GetUserAppointments?userId=$doctorId&state=$state');
+      // '$baseUrl/AppointmentContoller/GetUserDoneAppointments?userId=$doctorId');
 
       for (var element in response.data) {
         ReservationModels instruction = ReservationModels.json(element);

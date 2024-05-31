@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gbsub/Core/utils/style.dart';
 
 class CustomBookingItemDoctorInformations extends StatelessWidget {
@@ -23,9 +24,12 @@ class CustomBookingItemDoctorInformations extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
         Text(
-          'المريض : $name',
+          name,
           style: Styles.styleBold16
               .copyWith(color: Colors.black, fontWeight: FontWeight.w500),
+        ),
+        SizedBox(
+          height: 15.h,
         ),
         Text(
           '$year/$month/$day | $appointmentTime',

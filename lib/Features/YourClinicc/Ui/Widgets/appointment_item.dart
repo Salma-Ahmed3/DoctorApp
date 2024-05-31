@@ -42,7 +42,10 @@ class CustomBookingHistoryItem extends StatelessWidget {
           ),
           CustomBookingItemButtonsRow(
             reservationModels: reservationModels,
-          )
+          ),
+          SizedBox(
+            height: 10.h,
+          ),
         ],
       ),
     );
