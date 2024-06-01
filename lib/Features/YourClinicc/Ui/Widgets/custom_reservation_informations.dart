@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gbsub/Core/utils/style.dart';
 
-class CustomBookingItemDoctorInformations extends StatelessWidget {
-  const CustomBookingItemDoctorInformations({
+class CustomReservationInformations extends StatelessWidget {
+  const CustomReservationInformations({
     super.key,
     required this.name,
     required this.month,

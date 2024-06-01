@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gbsub/Core/utils/constans.dart';
 
-class CutomBookingItemImage extends StatelessWidget {
-  const CutomBookingItemImage({
+class CutomReservationItemImage extends StatelessWidget {
+  const CutomReservationItemImage({
     super.key,
     required this.pic,
   });

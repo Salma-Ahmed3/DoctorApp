@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gbsub/Features/YourClinicc/Models/reservation_models.dart';
-import 'package:gbsub/Features/YourClinicc/Ui/Widgets/custom_booking_item_doctor_info.dart';
+import 'package:gbsub/Features/YourClinicc/Ui/Widgets/custom_reservation_informations.dart';
 import 'package:gbsub/Features/YourClinicc/Ui/Widgets/custom_buttons_row.dart';
 import 'package:gbsub/Features/YourClinicc/Ui/Widgets/custom_divider.dart';
-import 'package:gbsub/Features/YourClinicc/Ui/Widgets/custom_doctor_image.dart';
+import 'package:gbsub/Features/YourClinicc/Ui/Widgets/custom_reservation_item_image.dart';
 
-class CustomBookingHistoryItem extends StatelessWidget {
-  const CustomBookingHistoryItem({
+class CustomReservationItem extends StatelessWidget {
+  const CustomReservationItem({
     super.key,
     required this.reservationModels,
   });
@@ -23,10 +23,10 @@ class CustomBookingHistoryItem extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              CutomBookingItemImage(
+              CutomReservationItemImage(
                 pic: reservationModels.pic,
               ),
-              CustomBookingItemDoctorInformations(
+              CustomReservationInformations(
                   name: reservationModels.name,
                   month: reservationModels.month,
                   day: reservationModels.day,
@@ -36,11 +36,11 @@ class CustomBookingHistoryItem extends StatelessWidget {
               // const CustomConatctMessageIcon()
             ],
           ),
-          const CustomBookingHistoryDivider(),
+          const CustomReservationDivider(),
           SizedBox(
             height: 5.h,
           ),
-          CustomBookingItemButtonsRow(
+          CustomReservationItemButtonsRow(
             reservationModels: reservationModels,
           ),
           SizedBox(

@@ -1,7 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:gbsub/Core/services/sharedpref.dart';
 import 'package:gbsub/Core/utils/constans.dart';
 import 'package:gbsub/Core/utils/style.dart';
 import 'package:gbsub/Features/YourClinicc/Ui/Widgets/success_empty_body.dart';
@@ -16,8 +15,7 @@ class ListReservationDoneViewBody extends StatelessWidget {
     return BlocBuilder<ReservationCubit, ReservationStates>(
       builder: (context, state) {
         return FutureBuilder(
-          future: ReservationCubit(dio: Dio())
-              .fetchReservationDone(Sharedhelper.getintdata(intkey), false),
+          future: ReservationCubit(dio: Dio()).fetchReservationDone(1, true),
           builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return Center(

@@ -13,6 +13,7 @@ class ReservationModels {
   final String spec;
   final int fee;
   final String unviersity;
+  final bool rated;
 
   const ReservationModels({
     required this.id,
@@ -29,6 +30,7 @@ class ReservationModels {
     required this.spec,
     required this.fee,
     required this.unviersity,
+    required this.rated,
   });
 
   factory ReservationModels.json(json) {
@@ -47,6 +49,7 @@ class ReservationModels {
       spec: json['spec'],
       fee: json['fee'],
       unviersity: json['unviersity'],
+      rated: json['rated'],
     );
   }
 }

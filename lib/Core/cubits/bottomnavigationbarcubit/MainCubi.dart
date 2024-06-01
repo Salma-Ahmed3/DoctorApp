@@ -45,41 +45,6 @@ class MainCubit extends Cubit<mainStates> {
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
   final GlobalKey<FormState> formkey = GlobalKey();
 
-  // void enterQuestion(String value) {
-  //   question = value;
-  //   emit(QuestionEntered());
-  // }
-
-  // void publicquestionTapped() {
-  //   if (publicquestions) {
-  //   } else {
-  //     publicquestions = true;
-  //     emit(PublicQuestionTapped());
-  //   }
-  // }
-
-  // void myquestionTapped() {
-  //   if (!publicquestions) {
-  //   } else {
-  //     publicquestions = false;
-  //     emit(Myquestionstapped());
-  //   }
-  // }
-
-  // Future<bool> postQUestion(int userId) async {
-  //   final dio = Dio();
-  //   publicquestions = true;
-  //   try {
-  //     emit(FetchingQuestionLoading());
-  //     dio.post('$baseUrl/Question?content=$question&User=$userId');
-  //     emit(FetchingQuestionSucsess());
-  //     return true;
-  //   } catch (erorr) {
-  //     emit(FetchingQuestionFailing());
-  //     return false;
-  //   }
-  // }
-
   Future<List<QuestionDetails>> getQuetions() async {
     final dio = Dio();
     questions = [];
@@ -103,26 +68,5 @@ class MainCubit extends Cubit<mainStates> {
       return [];
     }
   }
-
-  // Future<List<QuestionDetails>> getMyQuetions() async {
-  //   final dio = Dio();
-  //   questions = [];
-  //   try {
-  //     emit(FetchingQuestionLoading());
-  //     var response = await dio.get(
-  //         '$baseUrl/Question/userQuestions?id=${Sharedhelper.getintdata(intkey)}&pagesize=10&pageNum=1');
-
-  //     for (int i = 0; i < response.data['question'].length; i++) {
-  //       QuestionDetails questionDetails = QuestionDetails.json(
-  //           response.data['question'][i], response.data['user'][i]);
-
-  //       questions.add(questionDetails);
-  //     }
-  //     emit(FetchingQuestionSucsess());
-  //     return questions;
-  //   } on Exception catch (e) {
-  //     emit(FetchingQuestionFailing());
-  //     return [];
-  //   }
-  // }
+  // Reservation
 }

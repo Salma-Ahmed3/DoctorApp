@@ -1,24 +1,24 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:gbsub/Core/cubits/bottomnavigationbarcubit/MainCubi.dart';
 import 'package:gbsub/Core/services/sharedpref.dart';
 import 'package:gbsub/Core/utils/constans.dart';
 import 'package:gbsub/Core/utils/style.dart';
 import 'package:gbsub/Features/YourClinicc/Ui/Widgets/success_empty_body.dart';
 import 'package:gbsub/Features/YourClinicc/Ui/Widgets/success_has_data_body.dart';
+import 'package:gbsub/Features/YourClinicc/logic/booking_cubit.dart';
 import 'package:gbsub/Features/YourClinicc/logic/reservation_cubit.dart';
 import 'package:gbsub/Features/YourClinicc/logic/reservation_states.dart';
 
-class ListReservationCanceld extends StatelessWidget {
-  const ListReservationCanceld({super.key});
+class ListReservationCanceldViewBody extends StatelessWidget {
+  const ListReservationCanceldViewBody({super.key});
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ReservationCubit, ReservationStates>(
       builder: (context, state) {
         return BlocProvider(
-          create: (context) => MainCubit(),
+          create: (context) => BookingCubit(),
           child: FutureBuilder(
             future: ReservationCubit(dio: Dio())
                 .fetchReservationDone(Sharedhelper.getintdata(intkey), true),

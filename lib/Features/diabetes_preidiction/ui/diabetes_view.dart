@@ -13,9 +13,11 @@ class DiabetesView extends StatelessWidget {
       textDirection: TextDirection.rtl,
       child: BlocProvider(
         create: (context) => DiabetesCubit(),
-        child: const Scaffold(
-          appBar: CustomAppbar(title: 'تنبؤ مرض السكري'),
-          body: DiaBetesViewBody(),
+        child: const SafeArea(
+          child: Scaffold(
+            appBar: CustomAppbar(title: 'تنبؤ مرض السكري'),
+            body: DiaBetesViewBody(),
+          ),
         ),
       ),
     );

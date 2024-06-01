@@ -3,8 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gbsub/Core/utils/constans.dart';
 import 'package:gbsub/Core/utils/style.dart';
 
-class CustomBookingButton extends StatelessWidget {
-  const CustomBookingButton({
+class CustomReservationButton extends StatelessWidget {
+  const CustomReservationButton({
     super.key,
     required this.text,
     required this.textcolor,

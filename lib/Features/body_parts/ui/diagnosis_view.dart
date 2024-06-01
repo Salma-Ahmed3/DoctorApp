@@ -18,18 +18,20 @@ class DiagnosisView extends StatelessWidget {
         textDirection: TextDirection.rtl,
         child: BlocBuilder<MainCubit, mainStates>(
           builder: (context, state) {
-            return Scaffold(
-              appBar: AppBar(
-                centerTitle: true,
-                title: Text(
-                  'تشخيص',
-                  style: Styles.styleBold24.copyWith(
-                    color: mainColor,
+            return SafeArea(
+              child: Scaffold(
+                appBar: AppBar(
+                  centerTitle: true,
+                  title: Text(
+                    'تشخيص',
+                    style: Styles.styleBold24.copyWith(
+                      color: mainColor,
+                    ),
                   ),
+                  iconTheme: IconThemeData(color: mainColor),
                 ),
-                iconTheme: IconThemeData(color: mainColor),
+                body: const DiagnosisViewBody(),
               ),
-              body: const DiagnosisViewBody(),
             );
           },
         ),

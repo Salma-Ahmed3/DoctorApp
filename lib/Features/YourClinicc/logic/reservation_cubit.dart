@@ -9,13 +9,11 @@ class ReservationCubit extends Cubit<ReservationStates> {
   final Dio dio;
   List<ReservationModels> listreservation = [];
   Future<List<ReservationModels>> fetchReservationDone(
-      int doctorId, bool state) async {
+      int doctorid, bool state) async {
     try {
       listreservation = [];
       var response = await dio.get(
-          // '$baseUrl/AppointmentContoller/GetDoctorAppointments?doctorId=$doctorId&state=$state');
-          '$baseUrl/AppointmentContoller/GetUserAppointments?userId=$doctorId&state=$state');
-      // '$baseUrl/AppointmentContoller/GetUserDoneAppointments?userId=$doctorId');
+          '$baseUrl/AppointmentContoller/GetDoctorAppointments?doctorId=$doctorid&state=$state');
 
       for (var element in response.data) {
         ReservationModels instruction = ReservationModels.json(element);
