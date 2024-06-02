@@ -8,3 +8,4 @@ abstract class InstructionRepo {
   Future<Either<Failure, bool>> addNewHealthAdvice(
       {required int doctorId, required String content});
 }
+ 

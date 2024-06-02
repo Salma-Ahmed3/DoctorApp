@@ -11,7 +11,7 @@ class AddInstructionCubit extends Cubit<AddInstructionState> {
   String content = '';
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
   final GlobalKey<FormState> formkey = GlobalKey();
-
+ 
   Future<void> addNewHealthAdvice(
       {required int doctorId, required String content}) async {
     emit(NewInstructionLoading());
