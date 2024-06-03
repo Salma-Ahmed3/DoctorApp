@@ -1,4 +1,3 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gbsub/Core/services/sharedpref.dart';
@@ -6,7 +5,6 @@ import 'package:gbsub/Core/utils/constans.dart';
 import 'package:gbsub/Core/utils/style.dart';
 import 'package:gbsub/Features/YourClinicc/Ui/Widgets/success_empty_body.dart';
 import 'package:gbsub/Features/YourClinicc/Ui/Widgets/success_has_data_body.dart';
-import 'package:gbsub/Features/YourClinicc/logic/booking_cubit.dart';
 import 'package:gbsub/Features/YourClinicc/logic/reservation_cubit.dart';
 import 'package:gbsub/Features/YourClinicc/logic/reservation_states.dart';
 
@@ -18,9 +16,9 @@ class ListReservationCanceldViewBody extends StatelessWidget {
     return BlocBuilder<ReservationCubit, ReservationStates>(
       builder: (context, state) {
         return BlocProvider(
-          create: (context) => BookingCubit(),
+          create: (context) => ReservationCubit(),
           child: FutureBuilder(
-            future: ReservationCubit(dio: Dio())
+            future: ReservationCubit()
                 .fetchReservationDone(Sharedhelper.getintdata(intkey), true),
             builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {

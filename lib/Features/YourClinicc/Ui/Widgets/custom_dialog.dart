@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:gbsub/Core/services/sharedpref.dart';
+import 'package:gbsub/Core/utils/constans.dart';
+import 'package:gbsub/Core/utils/widgets/custom_snack_bar.dart';
 import 'package:gbsub/Features/YourClinicc/Models/reservation_models.dart';
+import 'package:gbsub/Features/YourClinicc/logic/reservation_cubit.dart';
 import 'package:gbsub/core/utils/style.dart';
 
 class Customdialog extends StatelessWidget {
@@ -33,7 +38,24 @@ class Customdialog extends StatelessWidget {
           ),
         ),
         TextButton(
-          onPressed: () async {},
+          onPressed: () async {
+            var of = BlocProvider.of<ReservationCubit>(context);
+            bool checker = await of.deleteAppointments(reservationModels.id);
+            if (checker) {
+              Navigator.of(context).pop(await of.fetchReservationDone(
+                  Sharedhelper.getintdata(intkey), false));
+              var of2 = BlocProvider.of<ReservationCubit>(context);
+              await of2.getTimesForDoctor(
+                  doctorid: reservationModels.id,
+                  year: of2.year,
+                  day: of2.day,
+                  month: of2.month);
+            } else {
+              customSnackBar(context, 'لا يمكن حذف هذا الميعاد',
+                  duration: 1500);
+              Navigator.of(context).pop();
+            }
+          },
           child: Text(
             'نعم',
             style: Styles.style14,

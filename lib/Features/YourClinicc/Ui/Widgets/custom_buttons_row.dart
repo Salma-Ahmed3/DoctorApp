@@ -1,6 +1,3 @@
-// ignore_for_file: unused_local_variable
-
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gbsub/Core/utils/constans.dart';
@@ -28,7 +25,9 @@ class CustomReservationItemButtonsRow extends StatelessWidget {
           buttonColor: mainColor,
         ),
         BlocProvider(
-          create: (context) => ReservationCubit(dio: Dio()),
+          create: (context) => ReservationCubit(
+              // dio: Dio(),
+              ),
           child: CustomReservationButton(
             onPressed: () async {
               showDialog(

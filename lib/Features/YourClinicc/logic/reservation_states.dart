@@ -6,14 +6,12 @@ class ReservationLoading extends ReservationStates {}
 
 class ReservationDelete extends ReservationStates {}
 
-class ReservationSuccess extends ReservationStates {
-  // final List<ReservationModels> reservation;
+class ReservationSuccess extends ReservationStates {}
 
-  // ReservationSuccess(this.reservation);
-}
+class ReservationFailure extends ReservationStates {}
 
-class ReservationFailure extends ReservationStates {
-  // final String errMessege;
+class ReservationTimesLoadingState extends ReservationStates {}
 
-  // ReservationFailure(this.errMessege);
-}
+class ReservationTimesLoadingSuccessState extends ReservationStates {}
+
+class ReservationDatePickedState extends ReservationStates {}

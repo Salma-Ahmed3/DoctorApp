@@ -1,4 +1,3 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gbsub/Core/services/sharedpref.dart';
@@ -16,7 +15,7 @@ class ListReservationDoneViewBody extends StatelessWidget {
     return BlocBuilder<ReservationCubit, ReservationStates>(
       builder: (context, state) {
         return FutureBuilder(
-          future: ReservationCubit(dio: Dio())
+          future: ReservationCubit()
               .fetchReservationDone(Sharedhelper.getintdata(intkey), true),
           builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
