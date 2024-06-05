@@ -46,9 +46,9 @@ class ReservationModels {
       pic: json['pic'],
       name: json['name'],
       number: json['number'],
-      spec: json['spec'],
-      fee: json['fee'],
-      unviersity: json['unviersity'],
+      spec: json['spec'] ?? "",
+      fee: json['fee'] ?? 0,
+      unviersity: json['unviersity'] ?? "",
       rated: json['rated'],
     );
   }

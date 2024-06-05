@@ -2,51 +2,48 @@ import 'package:dio/dio.dart';
 
 abstract class Failure {
   final String errMessage;
-
-  const Failure(this.errMessage);
+  Failure(this.errMessage);
 }
 
 class ServerFailure extends Failure {
   ServerFailure(super.errMessage);
-
-  factory ServerFailure.fromDioError(DioError dioError) {
-    switch (dioError.type) {
-      case DioErrorType.connectTimeout:
-        return ServerFailure('Connection timeout with ApiServer');
-
-      case DioErrorType.sendTimeout:
-        return ServerFailure('Send timeout with ApiServer');
-
-      case DioErrorType.receiveTimeout:
-        return ServerFailure('Receive timeout with ApiServer');
-
-      case DioErrorType.response:
+  factory ServerFailure.fromdioException(DioException dioException) {
+    switch (dioException.type) {
+      case DioExceptionType.connectionTimeout:
+        return ServerFailure('تاكد من الاتصال من الانترنت');
+      case DioExceptionType.sendTimeout:
+        return ServerFailure('فشل الأرسال تاكد من الاتصال من الانترنت');
+      case DioExceptionType.receiveTimeout:
+        return ServerFailure('تاكد من الاتصال من الانترنت');
+      case DioExceptionType.badCertificate:
+        return ServerFailure('errMessage');
+      case DioExceptionType.badResponse:
         return ServerFailure.fromResponse(
-            dioError.response!.statusCode, dioError.response!.data);
-      case DioErrorType.cancel:
-        return ServerFailure('Request to ApiServer was canceld');
-
-      case DioErrorType.other:
-        if (dioError.message.contains('SocketException')) {
-          return ServerFailure('No Internet Connection');
+            dioException.response!.statusCode!, dioException.response!.data!);
+      case DioExceptionType.cancel:
+        return ServerFailure('errMessage');
+      case DioExceptionType.connectionError:
+        return ServerFailure('لا يوجد اتصال بالأنترنت');
+      case DioExceptionType.unknown:
+        if (dioException.message!.contains('SocketException')) {
+          return ServerFailure('لا يوجد اتصال بالأنترنت');
+        } else {
+          return ServerFailure('حاول مرة اخرى');
         }
-        return ServerFailure('Unexpected Error, Please try again!');
       default:
-        return ServerFailure('Opps There was an Error, Please try again');
+        return ServerFailure('errMessage');
     }
   }
 
-  factory ServerFailure.fromResponse(int? statusCode, dynamic response) {
-    if (statusCode == 400 || statusCode == 401 || statusCode == 403) {
-      return ServerFailure(response['error']['pageNum']);
-    } else if (statusCode == 400 || statusCode == 401 || statusCode == 403) {
-      return ServerFailure(response['error']['pagesize']);
-    } else if (statusCode == 404) {
-      return ServerFailure('Your request not found, Please try later!');
-    } else if (statusCode == 500) {
-      return ServerFailure('Internal Server error, Please try later');
+  factory ServerFailure.fromResponse(int statesCode, dynamic response) {
+    if (statesCode == 400) {
+      if (response.runtimeType == String) {
+        return ServerFailure(response);
+      } else {
+        return response['Name'][0];
+      }
     } else {
-      return ServerFailure('Opps There was an Error, Please try again');
+      return ServerFailure('يوجد مشكلة في الخادم يتم العمل عليه حاليا');
     }
   }
 }

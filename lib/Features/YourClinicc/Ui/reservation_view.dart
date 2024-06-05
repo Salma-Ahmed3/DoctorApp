@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:gbsub/Core/utils/constans.dart';
 import 'package:gbsub/Core/utils/style.dart';
 import 'package:gbsub/Features/YourClinicc/Ui/Widgets/custom_tab.dart';
-import 'package:gbsub/Features/YourClinicc/Ui/Widgets/list_reservation_canceld_view_body.dart';
-import 'package:gbsub/Features/YourClinicc/Ui/Widgets/list_reservation_done_view_body.dart';
+import 'package:gbsub/Features/YourClinicc/Ui/Widgets/list_reservation_Done_view_body.dart';
+import 'package:gbsub/Features/YourClinicc/Ui/Widgets/list_reservation_Upcoming_view_body.dart';
 
 class ReservationView extends StatelessWidget {
   const ReservationView({super.key});
@@ -35,15 +35,15 @@ class ReservationView extends StatelessWidget {
                     text: 'الحجوزات القادمة',
                   ),
                   CustomBookingViewTap(
-                    text: 'الحجوزات الملغية',
+                    text: 'الحجوزات المنتهية',
                   ),
                 ],
               ),
             ),
             body: const TabBarView(
               children: [
-                ListReservationDoneViewBody(),
-                ListReservationCanceldViewBody()
+                ListUpComingReservationViewBody(),
+                ListReservationDoneViewBody()
               ],
             ),
           ),

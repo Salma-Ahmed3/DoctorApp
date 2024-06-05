@@ -10,7 +10,7 @@ class ReservationSuccess extends ReservationStates {}
 
 class ReservationFailure extends ReservationStates {}
 
-class ReservationTimesLoadingState extends ReservationStates {}
+class FormFeildChanged extends ReservationStates {}
 
 class ReservationTimesLoadingSuccessState extends ReservationStates {}
 

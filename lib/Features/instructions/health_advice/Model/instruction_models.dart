@@ -19,7 +19,10 @@ class HealthAdvice {
   final int id;
   HealthAdvice({required this.id, required this.content});
   factory HealthAdvice.json(json) {
-    return HealthAdvice(id: json['id'], content: json['content']);
+    return HealthAdvice(
+      id: json['id'],
+      content: json['content'],
+    );
   }
 }
 

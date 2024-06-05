@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gbsub/Core/utils/constans.dart';
 import 'package:gbsub/Features/YourClinicc/Models/reservation_models.dart';
@@ -12,10 +13,10 @@ class ReservationCubit extends Cubit<ReservationStates> {
   late String appointmentTime;
   late int doctorid;
   late int timeid;
-  late DateTime dateTime;
-  String month = DateTime.now().month.toString();
-  String year = DateTime.now().year.toString();
-  String day = DateTime.now().day.toString();
+  GlobalKey<FormState> key = GlobalKey();
+  AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
+  late String disease;
+  late String summary;
 
   ReservationCubit() : super(ReservationInitial());
   // final Dio dio;
@@ -30,7 +31,6 @@ class ReservationCubit extends Cubit<ReservationStates> {
       for (var element in response.data) {
         ReservationModels instruction = ReservationModels.json(element);
         listreservation.add(instruction);
-        print(listreservation);
       }
       emit(ReservationDelete());
       return listreservation;
@@ -41,36 +41,41 @@ class ReservationCubit extends Cubit<ReservationStates> {
 
   Future<bool> deleteAppointments(int appointmentid) async {
     try {
-      var response = await dio
-          .delete('$baseUrl/AppointmentContoller?AppontmentId=$appointmentid');
-      emit(ReservationDelete());
-      return response.data;
+      await dio
+          .delete("$baseUrl/AppointmentContoller?AppontmentId=$appointmentid");
+
+      return true;
     } catch (ex) {
       return false;
     }
   }
 
-  Future<void> getTimesForDoctor({
-    required int doctorid,
-    required String year,
-    required String day,
-    required String month,
-  }) async {
-    if (state is ReservationTimesLoadingState) {}
-    times = [];
-    timespicked = [];
-    timePicked = false;
+  void diesaseChanged(value) {
+    disease = value;
+    autovalidateMode = AutovalidateMode.disabled;
+    emit(FormFeildChanged());
+  }
 
-    emit(ReservationTimesLoadingState());
-    var response = await dio.get(
-        '$baseUrl/AppointmentContoller?doctorId=$doctorid&year=$year&month=$month&day=$day');
+  void noteChanged(value) {
+    summary = value;
+    autovalidateMode = AutovalidateMode.disabled;
+    emit(FormFeildChanged());
+  }
 
-    for (var element in response.data) {
-      ReservationModels appointmentDataModel = ReservationModels.json(element);
-      times.add(appointmentDataModel);
-      timespicked.add(false);
+  Future<bool> PostSummary(ReservationModels model, disease, summary) async {
+    var data = {
+      "apponitmentId": model.id,
+      "userId": model.userid,
+      "doctorId": model.doctorid,
+      "summaryOfTheSession": disease,
+      "mainDiseases": summary,
+      "datetime": DateTime.now().toString()
+    };
+    try {
+      await dio.post('$baseUrl/Diagnosis', data: data);
+      return true;
+    } catch (ex) {
+      return false;
     }
-
-    emit(ReservationTimesLoadingSuccessState());
   }
 }

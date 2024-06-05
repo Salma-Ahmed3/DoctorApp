@@ -5,7 +5,7 @@ import 'package:gbsub/Features/instructions/health_advice/Model/instruction_mode
 abstract class InstructionRepo {
   Future<Either<Failure, List<HealthAdviceModel>>> fetchHealthAdvice(
       {required int pageNum, required int pagesize});
+
   Future<Either<Failure, bool>> addNewHealthAdvice(
       {required int doctorId, required String content});
 }
- 

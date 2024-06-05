@@ -1,4 +1,4 @@
- // ignore_for_file: unused_local_variable
+// ignore_for_file: unused_local_variable
 
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
@@ -30,9 +30,9 @@ class InstructionRepoImpl implements InstructionRepo {
 
       return right(healthadvices);
     } catch (e) {
-      if (e is DioError) {
+      if (e is DioException) {
         return left(
-          ServerFailure.fromDioError(e),
+          ServerFailure.fromdioException(e),
         );
       }
       return left(
@@ -51,9 +51,9 @@ class InstructionRepoImpl implements InstructionRepo {
           endPoint: '/HealthAdvice?doctorId=$doctorId&content=$content');
       return right(true);
     } catch (e) {
-      if (e is DioError) {
+      if (e is DioException) {
         return left(
-          ServerFailure.fromDioError(e),
+          ServerFailure.fromdioException(e),
         );
       }
       return left(

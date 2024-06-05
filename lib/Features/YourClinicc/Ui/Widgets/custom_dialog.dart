@@ -44,16 +44,10 @@ class Customdialog extends StatelessWidget {
             if (checker) {
               Navigator.of(context).pop(await of.fetchReservationDone(
                   Sharedhelper.getintdata(intkey), false));
-              var of2 = BlocProvider.of<ReservationCubit>(context);
-              await of2.getTimesForDoctor(
-                  doctorid: reservationModels.id,
-                  year: of2.year,
-                  day: of2.day,
-                  month: of2.month);
             } else {
+              Navigator.of(context).pop();
               customSnackBar(context, 'لا يمكن حذف هذا الميعاد',
                   duration: 1500);
-              Navigator.of(context).pop();
             }
           },
           child: Text(

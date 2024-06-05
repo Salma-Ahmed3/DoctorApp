@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gbsub/Features/YourClinicc/Models/reservation_models.dart';
-import 'package:gbsub/Features/YourClinicc/Ui/Widgets/custom_reservation_item.dart';
+import 'package:gbsub/Features/YourClinicc/Ui/Widgets/custom_upcoming_reservation_item.dart';
 
-class SucessBody extends StatelessWidget {
-  const SucessBody({
+class SucessUpcomingBody extends StatelessWidget {
+  const SucessUpcomingBody({
     super.key,
     required this.reservationModels,
   });
@@ -23,7 +23,7 @@ class SucessBody extends StatelessWidget {
             child: ListView.separated(
               itemCount: reservationModels.length,
               itemBuilder: (context, index) {
-                return CustomReservationItem(
+                return CustomUpcomingReservationItem(
                   reservationModels: reservationModels[index],
                 );
               },

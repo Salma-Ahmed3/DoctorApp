@@ -29,9 +29,9 @@ class QuestionAndAnswerRepoImpl implements QuestionAndAnswerRepo {
       }
       return right(questions);
     } catch (e) {
-      if (e is DioError) {
+      if (e is DioException) {
         return left(
-          ServerFailure.fromDioError(e),
+          ServerFailure.fromdioException(e),
         );
       }
       return left(
@@ -53,9 +53,9 @@ class QuestionAndAnswerRepoImpl implements QuestionAndAnswerRepo {
               '/Answer?content=$content&doctorId=$doctorId&QuestionId=$questionId');
       return right(true);
     } catch (e) {
-      if (e is DioError) {
+      if (e is DioException) {
         return left(
-          ServerFailure.fromDioError(e),
+          ServerFailure.fromdioException(e),
         );
       }
       return left(
