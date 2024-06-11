@@ -7,6 +7,7 @@ import 'package:gbsub/Features/Home/Ui/widgets/custom_news_container.dart';
 // import 'package:gbsub/Features/YourClinicc/Ui/reservation_view.dart';
 import 'package:gbsub/Features/YourClinicc/Ui/reservation_view.dart';
 import 'package:gbsub/Features/body_parts/ui/diagnosis_view.dart';
+import 'package:gbsub/Features/covid19_radiography/ui/coivid19_view.dart';
 import 'package:gbsub/Features/diabetes_preidiction/ui/diabetes_view.dart';
 import 'package:gbsub/Features/instructions/health_advice/Ui/instructions_view.dart';
 import 'package:gbsub/Features/patients_record/Ui/patient_record_view.dart';
@@ -42,13 +43,13 @@ class HomeViewBody extends StatelessWidget {
               mainText: 'خدماتنا الالكترونية',
               icon1: FontAwesomeIcons.personDotsFromLine,
               icon2: FontAwesomeIcons.glassWaterDroplet,
-              icon3: FontAwesomeIcons.capsules,
+              icon3: FontAwesomeIcons.virusCovid,
               text1: 'تشخيص',
               text2: 'سكر الدم',
-              text3: 'تعارضات ادوية ',
+              text3: 'كوفيد 19',
               widget1: DiagnosisView(),
               widget2: DiabetesView(),
-              widget3: Text('aa'),
+              widget3: Covid19View(),
             ),
             const CustomNewsContainer(),
             SizedBox(
